@@ -1,27 +1,31 @@
+﻿---------------------------------------
 REGEXP QUESTION TYPE plugin for Moodle
-by Joseph Rezeau (and Jean-Michel Vedrine)
-this version compatible with Moodle 2.0 ONLY
-*** NOT COMPATIBLE WITH Moodle 2.1 onwards !!!
---------------------------------------------------------
-INTRODUCTION
+by Joseph Rézeau and Jean-Michel Vedrine
+----------------------------------------
 
-This question type (for the Moodle quiz module) aims at a more advanced system of student's response analysis, through the use of regular expresssions. The new question type is an extension of the SHORTANSWER type. It can be used on its own and can also be incorporated into the existing Cloze (embedded) question type, by being coded as {REGEXP} (on the model of {SHORTANSWER}.
+-------------------------------
+How to install on a moodle site
+-------------------------------
+If you downloaded this zip archive from the new moodle.org plugins page
+1.- Unzip the zip archive to your local computer.
+2.- This will give you a folder named "regexp".
+3.- GO TO STEP 4 below
+---
+If you downloaded this zip archive from https://github.com/rezeau
+1.- Unzip the zip archive to your local computer.
+2.- This will give you a folder named something like "rezeau-moodle_qtype_regexp-ff8c6a1". The end of the name may vary.
+3.- ***Rename*** that folder to "regexp".
+---
+4.- Upload the regexp folder to <your moodle>/question/type/ folder.
+5.- Visit your Admin/Notifications page so that the new question type gets installed.
 
-COMPLETE ONLINE DOCUMENTATION  at 
-http://docs.moodle.org/en/Regular_Expression_Short-Answer_question_type
 
-INSTALLATION
+This question type (for the Moodle quiz module) aims at a more advanced system of student's response analysis, through the use of regular expresssions. The new question type is an extension of the SHORTANSWER type. It can be used on its own and can also be incorporated into the existing Cloze (embedded) question type (see DOCUMENTATION).
 
-1.-  The zip archive you download from github to your local computer will be named something like "rezeau-moodle20_questiontype_regexp-36e8fee.zip". The end of the name may vary. 
+DOCUMENTATION
 
-2.- Unzip that zip archive. This will give you a folder named something like "rezeau-moodle-qtype_regexp-36e8fee".
+http://docs.moodle.org/20/en/Regular_Expression_Short-Answer_question_type
 
-3.- ***Rename*** that folder to "regexp". 
+CONTACT
 
-4.- Copy the entire "regexp" folder into your Moodle 2.0 moodle/question/type/ folder. 
-
-When in your Moodle site, login as Admin and visit the Notifications page once for the new regexp question type to be registered in the database. You should see something like these messages (example for a mySql database):
-*******************************
-regexp plugin needs upgrading
-regexp tables have been set up correctly
-*******************************
+moodle@rezeau.org
