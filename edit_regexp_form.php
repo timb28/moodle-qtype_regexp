@@ -45,14 +45,20 @@ class qtype_regexp_edit_form extends question_edit_form {
         $this->showalternate = false;
         if ("" != optional_param('showalternate', '', PARAM_RAW)) {
             $this->showalternate = true;
+            $this->questionid = optional_param('id', '', PARAM_NOTAGS);
+            $this->usecase = optional_param('usecase', '', PARAM_NOTAGS);
+            $this->studentshowalternate = optional_param('studentshowalternate', '', PARAM_NOTAGS);
+            $this->fraction = optional_param_array('fraction', '', PARAM_RAW);        
+            $this->currentanswers = optional_param_array('answer', '', PARAM_NOTAGS);
+            //$this->feedback = optional_param('feedback', '', PARAM_NOTAGS);
+            // no longer works in moodle 2.2 and later see http://moodle.org/mod/forum/discuss.php?d=197118
+            // so use data_submitted() instead
+            $feedback = data_submitted()->feedback;
+            // we only need to get the feedback text, for validation purposes when showalternate is requested
+            foreach($feedback as $key => $fb) {
+                $this->feedback[$key]['text'] = clean_param($fb['text'], PARAM_NOTAGS); 
+            }
         }
-        $this->questionid = optional_param('id', '', PARAM_NOTAGS);
-        $this->usecase = optional_param('usecase', '', PARAM_NOTAGS);
-        $this->studentshowalternate = optional_param('studentshowalternate', '', PARAM_NOTAGS);
-        $this->fraction = optional_param('fraction', '', PARAM_RAW);
-        $this->feedback = optional_param('feedback', '', PARAM_RAW);
-        $this->currentanswers = optional_param('answer', '', PARAM_NOTAGS);
-        
         // JR added advanced settings to hide mostly unwanted hints and tags settings   
         if ("" != optional_param('addhint', '', PARAM_RAW)) {
             $this->hints = optional_param('hint', '', PARAM_NOTAGS);
@@ -67,7 +73,7 @@ class qtype_regexp_edit_form extends question_edit_form {
         for ($i=0; $i<$counthints; $i++) {
             $mform->setAdvanced("hint[$i]");
         }
-        
+
         // general feedback has no meaning in the REGEXP question type, only specific feedback
         // so removing it from edit form
         $mform->removeElement('generalfeedback');
