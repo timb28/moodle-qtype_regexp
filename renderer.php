@@ -52,11 +52,13 @@ class qtype_regexp_renderer extends qtype_renderer {
         }
         $closest = find_closest($question, $currentanswer, $correct_response=false, $hintadded);
         $question->closest = $closest;
-        $currentanswer = $closest[0];
+            if ($closest[0]) {
+            $currentanswer = $closest[0];
+        }
 
         // showing / hiding regexp generated alternative sentences (for teacher only)
         // changed from javascript to print_collapsible_region OCT 2012
- 
+
         if ($ispreview) {
             $alternateanswers = get_alternateanswers($question);
             $response = $question->get_correct_response();
@@ -213,7 +215,7 @@ class qtype_regexp_renderer extends qtype_renderer {
         $question = $qa->get_question();
         $display_responses = '';
         $alternateanswers = get_alternateanswers($question);
-        $bestcorrectanswer = $alternateanswers[1]['answers'][0]; 
+        $bestcorrectanswer = $alternateanswers[1]['answers'][0];
 
         if (count($alternateanswers) == 1 ) { // no alternative answers besides the only "correct" answer
             $display_responses .= get_string('correctansweris', 'qtype_regexp', $bestcorrectanswer);
@@ -239,7 +241,7 @@ class qtype_regexp_renderer extends qtype_renderer {
                 }
             }
             $display_responses .= print_collapsible_region_end(true);
-        }     
+        }
         return $display_responses;
     }
 }
