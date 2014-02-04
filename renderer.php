@@ -201,8 +201,10 @@ class qtype_regexp_renderer extends qtype_renderer {
             $closest[3] = '['.$closest[3].']'; // Rest of submitted answer, in red.
         }
         $f = ''; // Student's response with corrections to be displayed in feedback div.
+            /* Academy Patch M#18 Improve the appearance of Regular Expression Short-Answer question answers
             // Color blue for correct words/letters.
             $f = '<span style="color:#0000FF;">'.$closest[1].'<strong>'.$closest[4].'</strong></span> '.$closest[3];
+            */
         if ($answer && $answer->feedback || $closestcomplete == true) {
             return $question->format_text($f.$answer->feedback.$completemessage, $answer->feedbackformat,
                 $qa, 'question', 'answerfeedback', $answer->id);
